@@ -88,8 +88,8 @@ int main() {
         if (suggestions.empty()) {
             cout << "(no suggestions)";
         } else {
-            for (auto& [word, amt] : suggestions)
-                cout << "[" << word << " Rs." << amt << "] ";
+           for (int i = 0; i < suggestions.size(); i++)
+    cout << "[" << suggestions[i].first << " Rs." << suggestions[i].second << "] ";
         }
         cout << endl;
     }
