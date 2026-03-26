@@ -6,7 +6,6 @@
 // Compile       : g++ -std=c++17 hashmap.cpp -o hashmap
 // Run           : ./hashmap
 // ============================================================
-
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -15,8 +14,8 @@ using namespace std;
 
 unordered_map<string, vector<Expense>> buildCategoryMap(vector<Expense>& expenses) {
     unordered_map<string, vector<Expense>> catMap;
-    for (auto& e : expenses)
-        catMap[e.category].push_back(e);
+    for (int i = 0; i < expenses.size(); i++)
+        catMap[expenses[i].category].push_back(expenses[i]);
     return catMap;
 }
 
@@ -33,19 +32,19 @@ int main() {
 
     auto catMap = buildCategoryMap(expenses);
 
-    // Filter one category — O(1) lookup
     string filter = "Food";
     cout << "=== FILTER: " << filter << " ===" << endl;
-    for (auto& e : catMap[filter])
-        cout << "  " << e.description << " -> Rs." << e.amount << endl;
+    for (int i = 0; i < catMap[filter].size(); i++)
+        cout << "  " << catMap[filter][i].description
+             << " -> Rs." << catMap[filter][i].amount << endl;
 
-    // All category totals
     cout << "\n=== ALL CATEGORY TOTALS ===" << endl;
-    for (auto& [cat, list] : catMap) {
+    for (auto it = catMap.begin(); it != catMap.end(); it++) {
         float total = 0;
-        for (auto& e : list) total += e.amount;
-        cout << "  " << cat << ": Rs." << total
-             << " (" << list.size() << " items)" << endl;
+        for (int i = 0; i < it->second.size(); i++)
+            total += it->second[i].amount;
+        cout << "  " << it->first << ": Rs." << total
+             << " (" << it->second.size() << " items)" << endl;
     }
 
     return 0;
