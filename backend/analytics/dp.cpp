@@ -6,7 +6,6 @@
 // Compile       : g++ -std=c++17 dp.cpp -o dp
 // Run           : ./dp
 // ============================================================
-
 #include <iostream>
 #include <vector>
 #include <map>
@@ -15,17 +14,13 @@ using namespace std;
 
 string getMonth(const string& date) { return date.substr(0, 7); }
 
-// DP Table: month -> cumulative total
-// dp[month] = dp[month] + current expense  (recurrence relation)
 map<string, float> buildDPTable(vector<Expense>& expenses) {
     map<string, float> dp;
-    for (auto& e : expenses)
-        dp[getMonth(e.date)] += e.amount;
+    for (int i = 0; i < expenses.size(); i++)
+        dp[getMonth(expenses[i].date)] += expenses[i].amount;
     return dp;
 }
 
-// Prefix sum DP: running total after each expense
-// dp[i] = dp[i-1] + expenses[i].amount
 vector<float> prefixSum(vector<Expense>& expenses) {
     int n = expenses.size();
     vector<float> dp(n);
@@ -47,12 +42,12 @@ int main() {
 
     cout << "=== DP: Monthly Totals ===" << endl;
     auto dpTable = buildDPTable(expenses);
-    for (auto& [month, total] : dpTable)
-        cout << "  " << month << " : Rs." << total << endl;
+    for (auto it = dpTable.begin(); it != dpTable.end(); it++)
+        cout << "  " << it->first << " : Rs." << it->second << endl;
 
     cout << "\n=== DP: Running Total (Prefix Sum) ===" << endl;
     auto ps = prefixSum(expenses);
-    for (int i = 0; i < (int)expenses.size(); i++)
+    for (int i = 0; i < expenses.size(); i++)
         cout << "  After expense " << i+1
              << " (" << expenses[i].description << ")"
              << ": total = Rs." << ps[i] << endl;
