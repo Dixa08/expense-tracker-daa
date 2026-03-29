@@ -1,76 +1,97 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <iomanip> // For better table formatting
+#include "models/expense.h"
+#include "sort/quicksort.cpp"   // Include your custom sorting
+#include "search/binarysearch.cpp" // Include your custom search
+#include "storage/persist.cpp"  // Include your file handling
+
 using namespace std;
 
-// Define Expense first
-struct Expense {
-    int id;
-    string description;
-    float amount;
-};
+vector<Expense> expenses;
+int idCounter = 1;
 
-// QuickSort functions
-int partition(vector<Expense>& arr, int low, int high) {
-    float pivot = arr[high].amount;
-    int i = low - 1;
-    for (int j = low; j < high; j++) {
-        if (arr[j].amount <= pivot) {
-            i++;
-            swap(arr[i], arr[j]);
-        }
+// Load data and sync the ID counter
+void loadFromFile() {
+    ifstream file("data.txt");
+    if (!file.is_open()) return;
+    
+    Expense e;
+    // Note: Ensure your persist.cpp uses the same format!
+    while (file >> e.id >> e.description >> e.amount) {
+        expenses.push_back(e);
+        if (e.id >= idCounter) idCounter = e.id + 1;
     }
-    swap(arr[i + 1], arr[high]);
-    return i + 1;
+    file.close();
 }
 
-void quickSort(vector<Expense>& arr, int low, int high) {
-    if (low < high) {
-        int pi = partition(arr, low, high);
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
-    }
+void displayHeader() {
+    cout << "\n" << setfill('=') << setw(40) << "" << endl;
+    cout << "  ID  |  Description       |  Amount" << endl;
+    cout << setfill('-') << setw(40) << "" << setfill(' ') << endl;
 }
 
 int main() {
-    vector<Expense> expenses;
-    int choice, id = 1;
+    loadFromFile();
+    int choice;
 
     while (true) {
-        cout << "\n====== EXPENSE TRACKER ======\n";
+        cout << "\n--- SMART EXPENSE TRACKER (v1.0) ---\n";
         cout << "1. Add Expense\n";
-        cout << "2. View Expenses\n";
-        cout << "3. Exit\n";
+        cout << "2. View All (Unsorted)\n";
+        cout << "3. QuickSort (By Amount)\n"; // Showcase your sort folder
+        cout << "4. Binary Search (By Amount)\n"; // Showcase your search folder
+        cout << "5. Total Analytics\n";
+        cout << "6. Exit\n";
         cout << "Enter choice: ";
         cin >> choice;
 
         if (choice == 1) {
             Expense e;
-            e.id = id++;
-
-            cout << "Enter description: ";
-            cin >> e.description;
-
-            cout << "Enter amount: ";
-            cin >> e.amount;
-
+            e.id = idCounter++;
+            cout << "Description: "; cin >> e.description;
+            cout << "Amount: ";      cin >> e.amount;
             expenses.push_back(e);
-            cout << "Expense added!\n";
-        }
-        else if (choice == 2) {
-            cout << "\n--- All Expenses ---\n";
-            quickSort(expenses, 0, (int)expenses.size() - 1);
-            for (auto e : expenses) {
-                cout << e.id << " | " << e.description << " | Rs." << e.amount << endl;
+            saveExpenses(expenses); // Function from storage/persist.cpp
+            cout << "Saved to disk.\n";
+
+        } else if (choice == 2) {
+            displayHeader();
+            for (auto &e : expenses) 
+                cout << setw(4) << e.id << " | " << setw(18) << left << e.description << " | Rs." << e.amount << endl;
+
+        } else if (choice == 3) {
+            if (expenses.empty()) continue;
+            // Calling the logic from your sort/ folder
+            quickSort(expenses, 0, expenses.size() - 1);
+            cout << "Data sorted using QuickSort algorithm.\n";
+
+        } else if (choice == 4) {
+            if (expenses.empty()) continue;
+            
+            // CRITICAL: Binary search only works on sorted data
+            quickSort(expenses, 0, expenses.size() - 1);
+            
+            float target;
+            cout << "Enter exact amount to search: ";
+            cin >> target;
+
+            int idx = binarySearchAmount(expenses, target); // From search/ folder
+            if (idx != -1) {
+                cout << "Match Found: " << expenses[idx].description << " (ID: " << expenses[idx].id << ")\n";
+            } else {
+                cout << "No expense found with that amount.\n";
             }
-        }
-        else if (choice == 3) {
-            cout << "Exiting...\n";
+
+        } else if (choice == 5) {
+            float total = 0;
+            for(auto &e : expenses) total += e.amount;
+            cout << "Total Expenditure: Rs." << total << endl;
+
+        } else if (choice == 6) {
             break;
         }
-        else {
-            cout << "Invalid choice!\n";
-        }
     }
-
     return 0;
 }

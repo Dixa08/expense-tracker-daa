@@ -1,12 +1,12 @@
-#pragma once
+#ifndef EXPENSE_H
+#define EXPENSE_H
+
 #include <string>
-using namespace std;
 
 struct Expense {
-    int    id;
-    string description;
-    float  amount;
-    string category;
-    string date;   // "YYYY-MM-DD"
-    string mode;   // "UPI", "Cash", "Card"
+    int id;
+    std::string description;
+    float amount;
 };
+
+#endif
