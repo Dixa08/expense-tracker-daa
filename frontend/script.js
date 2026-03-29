@@ -6,7 +6,7 @@ function addExpense() {
     let amount = document.getElementById("amount").value;
 
     if (!date || !category || !amount) {
-        alert("Fill all fields!");
+        alert("Fill all fields");
         return;
     }
 
@@ -29,21 +29,73 @@ function display() {
     table.innerHTML = "";
 
     let total = 0;
+    let categories = {};
 
-    expenses.forEach((e, index) => {
+    expenses.forEach((e, i) => {
         total += Number(e.amount);
 
-        let row = `<tr>
+        if (!categories[e.category]) {
+            categories[e.category] = 0;
+        }
+        categories[e.category] += Number(e.amount);
+
+        let row = `
+        <tr>
             <td>${e.date}</td>
             <td>${e.category}</td>
             <td>${e.amount}</td>
-            <td><button onclick="deleteExpense(${index})">Delete</button></td>
+            <td><button onclick="deleteExpense(${i})">Delete</button></td>
         </tr>`;
-
         table.innerHTML += row;
     });
 
-    document.getElementById("total").innerText = "Total: ₹ " + total;
+    // update cards
+    document.getElementById("total").innerText = total;
+    document.getElementById("count").innerText = expenses.length;
+
+    let top = Object.keys(categories).reduce((a, b) =>
+        categories[a] > categories[b] ? a : b, "-");
+
+    document.getElementById("topCat").innerText = top;
+
+    showCharts(categories);
 }
 
+function showCharts(categories) {
+    let labels = Object.keys(categories);
+    let data = Object.values(categories);
+
+    let colors = ["red", "blue", "green", "orange"];
+
+    if (window.pie) window.pie.destroy();
+    if (window.bar) window.bar.destroy();
+
+    let pieCtx = document.getElementById("pieChart");
+    let barCtx = document.getElementById("barChart");
+
+    window.pie = new Chart(pieCtx, {
+        type: "pie",
+        data: {
+            labels: labels,
+            datasets: [{
+                data: data,
+                backgroundColor: colors
+            }]
+        }
+    });
+
+    window.bar = new Chart(barCtx, {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Expenses",
+                data: data,
+                backgroundColor: colors
+            }]
+        }
+    });
+}
+
+// initial load
 display();
