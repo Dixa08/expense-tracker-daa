@@ -1,5 +1,5 @@
 // ============================================================
-// Member 3 — Dynamic Programming: monthly spending totals
+//  Dynamic Programming: monthly spending totals
 // DAA Concept  : Dynamic Programming (bottom-up tabulation)
 // Time          : O(n) build  |  O(1) query
 // Space         : O(m) where m = unique months
