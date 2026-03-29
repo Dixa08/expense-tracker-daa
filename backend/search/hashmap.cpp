@@ -1,5 +1,5 @@
 // ============================================================
-// Member 2 — HashMap: filter expenses by category
+/ HashMap: filter expenses by category
 // DAA Concept  : Hashing
 // Time          : O(n) build  |  O(1) average lookup
 // Space         : O(n)
