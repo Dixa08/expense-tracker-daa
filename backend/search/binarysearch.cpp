@@ -1,5 +1,5 @@
 // ============================================================
-// Member 2 — Binary Search: find expense by description
+//Binary Search: find expense by description
 // DAA Concept  : Decrease and Conquer
 // Time          : O(log n)  — needs sorted input first
 // Space         : O(1)
