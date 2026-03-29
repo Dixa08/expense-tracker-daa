@@ -1,5 +1,5 @@
 // ============================================================
-// Member 3 — Greedy Algorithm: budget alert & cut suggestions
+// Greedy Algorithm: budget alert & cut suggestions
 // DAA Concept  : Greedy (locally optimal choice at each step)
 // Time          : O(n log n) due to sorting
 // Space         : O(n)
