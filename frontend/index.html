@@ -1,36 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Expense Tracker</title>
+    <title>Expense Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
-<h1>Expense Tracker</h1>
+<h1>Expense Dashboard</h1>
 
-<h3>Add Expense</h3>
+<!-- TOP CARDS -->
+<div class="cards">
+    <div class="card">Total ₹ <span id="total">0</span></div>
+    <div class="card">Expenses Count <span id="count">0</span></div>
+    <div class="card">Top Category <span id="topCat">-</span></div>
+</div>
 
-<input type="date" id="date">
-<input type="text" id="category" placeholder="Category">
-<input type="number" id="amount" placeholder="Amount">
+<div class="container">
 
-<button onclick="addExpense()">Add</button>
+    <!-- LEFT -->
+    <div class="box">
+        <h2>Add Expense</h2>
+        <input type="date" id="date">
+        
+        <select id="category">
+            <option>food</option>
+            <option>travel</option>
+            <option>shopping</option>
+            <option>other</option>
+        </select>
 
-<h3 id="total">Total: ₹ 0</h3>
+        <input type="number" id="amount" placeholder="Amount">
+        <button onclick="addExpense()">Add</button>
+    </div>
 
-<h3>Expenses List</h3>
+    <!-- RIGHT -->
+    <div class="box">
+        <h2>Expenses List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Category</th>
-            <th>Amount</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody id="tableBody"></tbody>
-</table>
+</div>
+
+<!-- CHARTS -->
+<div class="charts">
+    <canvas id="pieChart"></canvas>
+    <canvas id="barChart"></canvas>
+</div>
 
 <script src="script.js"></script>
 
