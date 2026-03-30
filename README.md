@@ -77,8 +77,6 @@ This project is an Expense Tracker system focused on demonstrating strong backen
 
 # DAA Expense Tracker & Optimizer
 
-A C++ Backend application demonstrating core Design and Analysis of Algorithms (DAA) concepts.
-
 ## 🚀 Key Algorithms Implemented:
 * **Divide & Conquer**: QuickSort and MergeSort for data organization.
 * **Logarithmic Search**: Binary Search for price-point lookups.
