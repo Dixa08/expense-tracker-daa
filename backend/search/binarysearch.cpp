@@ -9,13 +9,13 @@
 #include <vector>
 #include "../models/expense.h"
 
-int binarySearchAmount(const std::vector<Expense>& arr, float target) {
-    int low = 0, high = arr.size() - 1;
+int binarySearchAmount(std::vector<Expense>& arr, float target) {
+    int low = 0, high = (int)arr.size() - 1;
     while (low <= high) {
         int mid = low + (high - low) / 2;
         if (arr[mid].amount == target) return mid;
         if (arr[mid].amount < target) low = mid + 1;
         else high = mid - 1;
     }
-    return -1; // Not found
+    return -1;
 }
