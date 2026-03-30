@@ -67,12 +67,30 @@ This project is an Expense Tracker system focused on demonstrating strong backen
 
 ## Features
 
+
 * Efficient expense storage using file handling
 * Fast searching using Binary Search & Hashing
 * Optimized sorting using QuickSort & MergeSort
 * Smart analytics using DP & Greedy approaches
 * Scalable backend design using modular structure
 
+
+# DAA Expense Tracker & Optimizer
+
+A C++ Backend application demonstrating core Design and Analysis of Algorithms (DAA) concepts.
+
+## 🚀 Key Algorithms Implemented:
+* **Divide & Conquer**: QuickSort and MergeSort for data organization.
+* **Logarithmic Search**: Binary Search for price-point lookups.
+* **Advanced Data Structures**: **Trie (Prefix Tree)** for $O(L)$ name searching and **HashMaps** for $O(1)$ category analysis.
+* **Greedy Strategy**: Local optimum selection for budget cutting.
+* **Dynamic Programming**: 0/1 Knapsack solution for global budget optimization.
+
+## 📁 Structure
+* `backend/`: Core logic and algorithm implementation.
+* `data/`: CSV persistence layer.
+
+  
 ---
 
 ## Note
