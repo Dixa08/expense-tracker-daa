@@ -2,6 +2,7 @@
 
 A C++ backend + HTML/JS frontend expense tracking system demonstrating core Data Structures and Algorithms.
 
+
 ## Team Members & Responsibilities
 
 | Member   | Responsibility                        | Modules                                | Tech/Concepts                                                                         |
@@ -45,6 +46,87 @@ g++ -std=c++17 backend/storage/persist.cpp -o persist && ./persist
 ```
 
 ---
+expense-tracker-daa/
+
+│
+
+├── 📄 README.md
+
+├── 📄 requirements.txt (if using Python later)
+
+├── 📄 .gitignore
+
+│
+
+├── 📁 backend/
+
+│   │
+
+│   ├── 📁 sort/
+
+│   │   ├── quicksort.cpp
+
+│   │   ├── mergesort.cpp
+
+│   │
+
+│   ├── 📁 search/
+
+│   │   ├── binary_search.cpp
+
+│   │   ├── hashmap.cpp
+
+│   │
+
+│   ├── 📁 analytics/
+
+│   │   ├── dp_analysis.cpp
+
+│   │   ├── greedy.cpp
+
+│   │
+
+│   ├── 📁 storage/
+
+│   │   ├── file_handler.cpp
+
+│   │   ├── trie.cpp
+
+│   │
+
+│   └── 📄 main.cpp   👈 (MAIN ENTRY FILE)
+
+│
+
+├── 📁 frontend/
+
+│   ├── 📄 index.html
+
+│   ├── 📄 style.css
+
+│   ├── 📄 script.js
+
+│
+
+├── 📁 data/
+
+│   ├── 📄 expenses.csv   👈 (store user data here)
+
+│
+
+├── 📁 docs/
+
+│   ├── 📄 report.pdf
+
+│   ├── 📄 presentation.pptx
+
+│
+
+└── 📁 .vscode
+
+
+
+
 
 ## Tech Stack
 
