@@ -1,65 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Expense Dashboard</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta charset="UTF-8">
+<title>Expense Tracker</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-<h1>Expense Dashboard</h1>
-
-<!-- TOP CARDS -->
-<div class="cards">
-    <div class="card">Total ₹ <span id="total">0</span></div>
-    <div class="card">Expenses Count <span id="count">0</span></div>
-    <div class="card">Top Category <span id="topCat">-</span></div>
-</div>
+<header class="topbar">
+  <h2>EXPENSE TRACKER</h2>
+</header>
 
 <div class="container">
 
-    <!-- LEFT -->
-    <div class="box">
-        <h2>Add Expense</h2>
-        <input type="date" id="date">
-        
-        <select id="category">
-            <option>food</option>
-            <option>travel</option>
-            <option>shopping</option>
-            <option>other</option>
-        </select>
+  <!-- LEFT -->
+  <div class="left">
 
-        <input type="number" id="amount" placeholder="Amount">
-        <button onclick="addExpense()">Add</button>
+    <div class="card">
+      <h3>EXPENSE ENTRY</h3>
+
+      <input type="date" id="date">
+
+      <select id="category">
+        <option>Food</option>
+        <option>Travel</option>
+        <option>Utilities</option>
+        <option>Other</option>
+      </select>
+
+      <input type="number" id="amount" placeholder="Amount">
+      <input type="text" id="note" placeholder="Notes">
+
+      <button onclick="addExpense()">SAVE</button>
     </div>
 
-    <!-- RIGHT -->
-    <div class="box">
-        <h2>Expenses List</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Category</th>
-                    <th>Amount</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody"></tbody>
-        </table>
+    <div class="card">
+      <h3>SEARCH & SORT</h3>
+
+      <input id="search" onkeyup="searchExpense()" placeholder="Search">
+      <select id="sort" onchange="sortExpense()">
+        <option value="Date">Date</option>
+        <option value="Amount">Amount</option>
+        <option value="Category">Category</option>
+      </select>
     </div>
 
-</div>
+  </div>
 
-<!-- CHARTS -->
-<div class="charts">
-    <canvas id="pieChart"></canvas>
-    <canvas id="barChart"></canvas>
+  <!-- RIGHT -->
+  <div class="right">
+
+    <div class="top-cards">
+      <div class="card"><h3>Total ₹ <span id="total">0</span></h3></div>
+      <div class="card"><h3>Top <span id="top">-</span></h3></div>
+      <div class="card"><h3>Remaining ₹ <span id="remaining">50000</span></h3></div>
+    </div>
+
+    <div class="grid">
+      <div class="card"><canvas id="pieChart"></canvas></div>
+      <div class="card"><canvas id="barChart"></canvas></div>
+      <div class="card full"><canvas id="lineChart"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h3>EXPENSE LIST</h3>
+      <table id="table">
+        <tr>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Amount</th>
+          <th>Action</th>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>
