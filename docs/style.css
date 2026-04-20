@@ -4,6 +4,30 @@ body {
     background: #f4f6f9;
 }
 
+
+/* Mobile Fixes */
+@media (max-width: 768px) {
+    input, select, button {
+        width: 100% !important;
+        margin: 10px 0;
+        padding: 15px;
+        font-size: 16px; /* Prevents zoom */
+        box-sizing: border-box;
+    }
+    
+    .setup-box, .form-section {
+        padding: 20px;
+    }
+    
+    .controls, .daa-buttons {
+        flex-direction: column;
+    }
+    
+    .daa-btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
 /* HEADER */
 header {
     display: flex;
