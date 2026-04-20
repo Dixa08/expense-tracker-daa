@@ -1,5 +1,0 @@
-id,description,amount,category,date,mode
-1,Pizza,150,Food,2024-03-10,UPI
-2,Auto,45,Transport,2024-03-11,Cash
-3,Groceries,320,Food,2024-03-12,Card
-4,Electricity,850,Utilities,2024-03-14,NetBanking
