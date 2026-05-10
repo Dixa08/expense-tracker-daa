@@ -181,7 +181,7 @@ Step 6  →  Explain DP / Dijkstra logic from code
 ## 🎓 Resume Line
 
 ```
-Full-stack Expense Tracker with DAA (Greedy/DP/Dijkstra) | Live Demo | GitHub Pages
+Full-stack Expense Tracker with DAA (Greedy/DP/Dijkstra) | Live Demo | GitHub Pages|
 ```
 
 ---
