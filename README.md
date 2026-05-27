@@ -138,7 +138,7 @@ g++ -o algorithms algorithms.cpp
 
 ---
 
-## 🎯 Viva Demo Flow (2 Minutes)
+## 🎯 Demo Flow (2 Minutes)
 
 ```
 Step 1  →  Open live site: https://dixa08.github.io/expense-tracker-daa/
