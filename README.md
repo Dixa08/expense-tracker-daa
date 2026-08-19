@@ -196,6 +196,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ⭐ **If this project helped you, give it a star!** ⭐
 
-Made with ❤️ for academic excellence + portfolio impact
+Made with ❤️ for  academic excellence(pbl) + portfolio impact
 
 </div>
