@@ -72,7 +72,7 @@ Helps answer: *"Which expenses give me the best value within ₹X?"*
 
 ```
 Graph nodes = expense categories
-Edge weights = cost to transition / reduce spending
+Edge weights = cost to transition/reduce spending
 Dijkstra finds: minimum-cost savings route
 ```
 
@@ -94,17 +94,17 @@ Deployment      →  GitHub Pages (frontend) · localhost:5000 (API)
 ```
 expense-tracker-daa/
 │
-├── 🟢 frontend/                  # Live on GitHub Pages
+├── 🟢 frontend/             # Live on GitHub Pages
 │   ├── index.html           # Main app UI
 │   ├── style.css            # Responsive styles
 │   └── script.js            # Charts + API calls + DAA UI
 │
-├── 🔵 backend-api/              # REST API (localhost:5000)
+├── 🔵 backend-api/          # REST API (localhost:5000)
 │   ├── server.js            # Express routes + DAA logic
 │   ├── package.json
 │   └── daa-bridge.js        # C++ ↔ Node.js bridge (optional)
 │
-├── 🟣 backend/                  # C++ DAA Engine
+├── 🟣 backend/              # C++ DAA Engine
 │   ├── algorithms.cpp       # Greedy · DP · Dijkstra
 │   └── algorithms.exe       # Compiled binary
 │
